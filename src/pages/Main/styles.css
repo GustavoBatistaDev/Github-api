@@ -1,0 +1,52 @@
+.containerr {
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container-image {
+  display: flex;
+  align-items: center;
+}
+
+
+.container-input {
+  display: flex;
+  justify-content: center;
+}
+
+.search-user {
+  padding-left: 15px !important;
+  margin-right: 10px !important;
+  outline: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  border: 2px solid black;
+}
+
+.search-button {
+
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px !important;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(45deg, #00586f, #483875);
+  /* Adicione uma sombra suave para um efeito mais bonito */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  /* Adicione uma transição suave para alterar as cores no hover */
+  transition: 0.5s ease-in-out;
+}
+
+/* Estilo para quando o botão é hover */
+.search-button:hover {
+
+  transform: scale(1.2);
+  background: linear-gradient(45deg, #1e757f, #744887);
+  cursor: pointer;
+}
+

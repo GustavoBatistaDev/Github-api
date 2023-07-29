@@ -1,0 +1,48 @@
+.main-container{
+  display: flex;
+  min-height: 100vh;
+
+}
+
+@media screen and (max-width: 768px) {
+  .main-container{
+    flex-direction: column;
+  }
+}
+
+.side-menu{
+  padding: 10px !important;
+  min-width: 350px;
+
+}
+
+.main-content{
+
+  width:1540px;
+  height: 100%;
+  background-color: rgba(240, 248, 255, 0.032);
+}
+
+.user-photo{
+  border-radius: 50%;
+  height: 270px;
+  width: 270px;
+  object-fit: cover;
+
+}
+
+.container-data-user{
+  margin-top: 60px !important;
+}
+
+.followers{
+  margin-top: 3px !important;
+}
+
+.follower{
+  margin-top: 6px !important;
+}
+
+#cursor-pointer {
+  cursor: pointer ;
+}
