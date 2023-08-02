@@ -1,48 +1,115 @@
-.main-container{
+.main-container {
   display: flex;
   min-height: 100vh;
 
 }
 
 @media screen and (max-width: 768px) {
-  .main-container{
+  .main-container {
     flex-direction: column;
   }
 }
 
-.side-menu{
+.side-menu {
+
+  margin: 0 !important;
   padding: 10px !important;
-  min-width: 350px;
+  min-width: 330px;
+  transition: .8s ease-in;
 
 }
 
-.main-content{
-
-  width:1540px;
+.main-content {
+  border-radius: 10px;
   height: 100%;
   background-color: rgba(240, 248, 255, 0.032);
 }
 
-.user-photo{
+.user-photo {
   border-radius: 50%;
-  height: 270px;
-  width: 270px;
+  height: 230px;
+  width: 230px;
   object-fit: cover;
 
 }
 
-.container-data-user{
+.container-data-user {
+  display: flex;
+  justify-content: center;
   margin-top: 60px !important;
+
 }
 
-.followers{
+.followers {
   margin-top: 3px !important;
 }
 
-.follower{
+.follower {
   margin-top: 6px !important;
 }
 
 #cursor-pointer {
-  cursor: pointer ;
+  cursor: pointer;
+}
+
+.card-repo {
+  min-width: 320px;
+
+  border-left: 2px solid rgb(0, 234, 255);
+  margin: 20px !important;
+  background-color: #141518;
+  padding: 20px !important;
+}
+
+.tecnology {
+  margin: 20px 0 0 0 !important;
+  color: rgb(0, 234, 255);
+}
+
+.view-more {
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px !important;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.406) !important;
+  transition: .3s ease;
+}
+
+.view-more:hover {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.056) !important;
+  color: rgb(0, 0, 0) !important;
+  transform: scale(1.1);
+}
+
+.closed{
+  margin-left: -15% !important;
+}
+
+.technology{
+  cursor: pointer;
+  margin: 10px 0 !important;
+  border-radius: 0 0 7px 7px;
+  background-color: rgba(255, 255, 255, 0.056) !important;
+  padding: 5px 20px !important;
+}
+
+.main{
+  margin-left: 330px !important;
+  width: 100%;
+}
+
+.cleaner{
+  outline: none !important;
+  background-color: rgb(0, 157, 172);
+  color: white;
+  border: none;
+  padding: 5px 20px !important;
+  transition: .2s ease-in-out;
+
+}
+
+
+.selected{
+  background-color: rgb(0, 234, 255) !important;
 }

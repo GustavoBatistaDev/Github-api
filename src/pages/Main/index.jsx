@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable arrow-body-style */
@@ -9,7 +10,7 @@ import logo from '../../assets/img/GitHub_Logo_white.png';
 import "./styles.css";
 
 // eslint-disable-next-line import/order
-import { FaSearch } from 'react-icons/fa';
+
 
 
 // eslint-disable-next-line react/function-component-definition
@@ -25,8 +26,8 @@ const Main = () => {
         </div>
         <div className="container-input">
           <input value={login} onChange={e => setLogin(e.target.value)} placeholder="Search user..." className="search-user" type="text" />
-          <Link to={`/repositories`} className="search-button" >
-            <FaSearch className="mt-icon" fontSize={16} color="white" />
+          <Link to={`${login}/repositories`} className="search-button" >
+            <i className="fa-solid fa-magnifying-glass text-white"></i>
           </Link>
         </div>
       </div>

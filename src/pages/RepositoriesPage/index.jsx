@@ -1,49 +1,91 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-duplicates */
+import React, { useEffect } from 'react';
 
-/* eslint-disable react/function-component-definition */
-import React from 'react';
-import './Style.css';
-import { FaArrowLeft } from 'react-icons/fa';
+import { useState } from 'react';
+
 import { IoMdPeople } from 'react-icons/io';
-import user from '../../assets/img/user.jpg';
+import './Style.css';
 
+import { ProfilePhoto } from './ProfilePhoto';
+import { UserData } from './UserData';
+import { PersonalInfo } from './PersonalInfo';
+import { Technologies } from './Technologies';
+import { Repositories } from './Repositories';
+import { getLanguagesFrom } from '../../services/api';
 
+import { getUser } from '../../services/api';
+import { getRepos } from '../../services/api';
+import { Loading } from '../../components/Loading';
+// eslint-disable-next-line import/order
+import { useParams } from 'react-router-dom';
+
+// eslint-disable-next-line react/function-component-definition
 const RepositoriesPage = () => {
-  const a = '';
+
+  const {login} = useParams();
+
+
+  const [user, setUser] = useState();
+  const [currentLanguage, setCurrentLanguage] = useState('');
+  const [languages, setLanguages] = useState();
+  const [loading, setLoading] = useState(true);
+  const [repositories, setRepositories] = useState();
+
+
+  useEffect(() => {
+    const loadData = async () => {
+      const [userResponse, repositoryResponse] =  await Promise.all([
+        getUser(login),
+        getRepos(login)
+      ]);
+      setUser(userResponse.data);
+      setRepositories(repositoryResponse.data);
+
+      setLanguages(getLanguagesFrom(repositoryResponse.data));
+
+      setLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  const onFilterClick = (language) => {
+    setCurrentLanguage(language);
+  }
+
+  if(loading){
+    return <Loading/>
+  }
+
   return (
-    <section className='main-container'>
-      <aside className='side-menu'>
-        <div className='d-flex justify-content-center'>
-          <FaArrowLeft fontSize={20} />
-          <div className='container-data-user mx-auto'>
-            <img className='user-photo mx-auto' src={user} alt="" />
-            <div className='d-flex'>
-              <div>
-                <h2 className='mx-auto mt-3'>Gabriel Santos</h2>
-                <div className='d-flex '>
-                  <div id="cursor-pointer">
-                    <IoMdPeople className='mr-1' fontSize={25} />
-                  </div>
-                  <span className='followers' style={{ fontSize: '15px', color: 'darkgray' }}>209</span>
-                  <h6 style={{ fontSize: '14px' }} className='ml-1 follower font-italic'>Followers</h6>
-                  <h6 style={{ fontSize: '15px' }} className='ml-1 follower font-italic followers'>
-                    <span className='followers mr-1' style={{ fontSize: '15px', color: 'darkgray' }}>209</span>seguindo.
-                  </h6>
-                </div>
-              </div>
+    <section className='main-container' >
+      <aside className="side-menu position-fixed">
+        <ProfilePhoto user={user} />
+        <div className='d-flex'>
+          <div className=' mx-auto'>
+            <h2 className='mx-auto mt-3'>{user.name}</h2>
+            <div className='d-flex '>
+              <IoMdPeople className='mr-1' fontSize={25} />
+              <UserData user={user} />
             </div>
+            <PersonalInfo user={user} />
+            <Technologies currentLanguage={currentLanguage}
+              onClicktech={onFilterClick} languages={languages} />
           </div>
         </div>
       </aside>
-      <main className='main p-2'>
-       <div className="main-content">
-        algo {a}
-       </div>
+      <main className='main  '>
+        <div className="main-content">
+          <h4 className='p-4'>Repositories</h4>
+          <div className="row justify-content-center">
+            <Repositories currentLanguage={currentLanguage} repositories={repositories} />
+          </div>
+        </div>
       </main>
-
     </section>
   );
-};
+}
 
 export default RepositoriesPage;
 
